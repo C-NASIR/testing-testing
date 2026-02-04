@@ -1,0 +1,55 @@
+provider:
+  type: ""
+  base_url: ""
+  token_env: ""
+  owner: ""
+  repo: ""
+branches:
+  feature_prefix: feature/
+  bugfix_prefix: bugfix/
+  hotfix_prefix: hotfix/
+  main_branch: main
+  develop_branch: ""
+workflows:
+  start:
+    base_branch: main
+    auto_push: true
+    fetch_first: true
+  pr:
+    draft: false
+    default_reviewers: []
+    labels: []
+  sync:
+    strategy: rebase
+    auto_push: true
+    force_push: true
+  cleanup:
+    merged_only: true
+    age_threshold_days: 30
+    protected_branches:
+      - main
+      - master
+      - develop
+commits:
+  conventional: false
+  types:
+    - feat
+    - fix
+    - docs
+    - refactor
+    - test
+    - chore
+  scopes: []
+  require_scope: false
+release:
+  default_bump: patch
+  changelog_sections:
+    - breaking
+    - features
+    - fixes
+    - other
+  tag_prefix: v
+ui:
+  color: true
+  emoji: false
+  verbose: false
